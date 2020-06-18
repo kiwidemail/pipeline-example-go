@@ -15,6 +15,12 @@ stages:
       dockerfilePath: ./Dockerfile
       buildContext: .
       tag: example-helloserver:${CICD_EXECUTION_SEQUENCE}
+    env:
+      PLUGIN_DEBUG: "true"
+      PLUGIN_INSECURE: "true"
+      PLUGIN_DAEMON_OFF: "true"
+      DOCKER_HOST: tcp://dind.default:2376
+
 - name: Deploy
   steps:
   - applyYamlConfig:
